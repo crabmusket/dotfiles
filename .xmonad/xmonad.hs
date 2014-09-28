@@ -76,7 +76,7 @@ tabConfig = defaultTheme {
 xmobarTitleColor = "#ffb6b0"
 
 -- Color of current workspace in xmobar.
-xmobarCurrentWorkspaceColor = "#ceffac"
+xmobarCurrentWorkspaceColor = "#ccff33"
 
 -- Width of the window border in pixels.
 myBorderWidth = 3
@@ -300,7 +300,7 @@ main = do
   xmonad $ defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc
-          , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
+          , ppTitle = const "" --xmobarColor xmobarTitleColor "" . shorten 100
           , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
           , ppSep = "   "
       }
