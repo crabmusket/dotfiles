@@ -16,6 +16,7 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.ThreeColumns
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Actions.UpdatePointer (updatePointer, PointerPosition(..))
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
@@ -297,12 +298,14 @@ myStartupHook = return ()
 main = do
   xmproc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
   xmonad $ defaults {
-      logHook = dynamicLogWithPP $ xmobarPP {
-            ppOutput = hPutStrLn xmproc
-          , ppTitle = const "" --xmobarColor xmobarTitleColor "" . shorten 100
-          , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
-          , ppSep = "   "
-      }
+      logHook = do
+            dynamicLogWithPP $ xmobarPP {
+                  ppOutput = hPutStrLn xmproc
+                , ppTitle = const "" --xmobarColor xmobarTitleColor "" . shorten 100
+                , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
+                , ppSep = "   "
+             }
+            updatePointer (Relative 0.95 0.95)
       , startupHook = setWMName "LG3D"
   }
 
