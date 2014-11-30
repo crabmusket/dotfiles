@@ -112,7 +112,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Launch dmenu
   -- Use this to launch programs without a key binding.
   , ((modMask, xK_p),
-     spawn "dmenu_run")
+     spawn "dmenu_run -nb black -nf grey")
 
   -- Take a screenshot.
   , ((modMask .|. shiftMask, xK_p),
