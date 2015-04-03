@@ -12,8 +12,11 @@ Config { font = "-*-Fixed-R-Normal-*-16-*-*-*-*-*-*-*"
                      , Run Com "bash" ["-c", "~/.xmonad/wireless.sh"] "wireless" 50
                      , Run Date "%_d/%m/%Y %H:%M:%S" "date" 10
                      , Run StdinReader
+                     , Run BatteryP ["BAT0", "BAT1"]
+                        ["-t", "AC <acstatus> <left>% (<timeleft>)"]
+                        100
                      ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%StdinReader% | %cpu% | %memory%  %swap% | %volume% }{ %wireless% | %YSSY% | <fc=#ee9a00>%date%</fc>"
+        , template = "%StdinReader% | %cpu% | %memory%  %swap% | %volume% | %battery% }{ %wireless% | %YSSY% | <fc=#ee9a00>%date%</fc>"
         }
