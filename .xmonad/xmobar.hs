@@ -3,7 +3,7 @@ Config { font = "-*-Fixed-R-Normal-*-16-*-*-*-*-*-*-*"
         , border = TopB
         , bgColor = "black"
         , fgColor = "grey"
-        , position = Top
+        , position = Bottom
         , commands = [ Run Weather "YSSY" ["-t","<tempC>C","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
                      , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
                      , Run Memory ["-t","Mem: <usedratio>%"] 10
