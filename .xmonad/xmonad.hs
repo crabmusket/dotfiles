@@ -17,6 +17,7 @@ import XMonad.Layout.ThreeColumns
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Actions.UpdatePointer (updatePointer, PointerPosition(..))
+import Graphics.X11.ExtraTypes.XF86
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
@@ -149,6 +150,14 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Eject CD tray.
   , ((0, 0x1008FF2C),
      spawn "eject -T")
+
+  -- Increase brightness.
+  , ((0, xF86XK_MonBrightnessUp),
+     spawn "xbacklight +10")
+
+  -- Decrease brightness.
+  , ((0, xF86XK_MonBrightnessDown),
+     spawn "xbacklight -10")
 
   --------------------------------------------------------------------
   -- "Standard" xmonad key bindings
