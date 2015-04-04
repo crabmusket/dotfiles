@@ -1,0 +1,35 @@
+# System
+.ssh/
+.gnome/
+.gnome2/
+.compiz/
+.config/
+.local/
+.gconf/
+.pki/
+.cache/
+.dbus/
+
+# Applications
+.cabal/
+.ghc/
+.mozilla/
+.vim/
+
+# Temp files
+*.hi
+*.o
+*.swp
+
+# Files
+.bash_history
+.bash_logout
+.profile
+.vimrc
+.viminfo
+.Xauthority
+.ICEauthority
+.dmrc
+
+# Ubuntu
+Downloads/
