@@ -289,7 +289,8 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
-myStartupHook = return ()
+myStartupHook = do
+    spawn "~/.xmonad/gnome-keyring.sh"
 
 
 ------------------------------------------------------------------------
@@ -306,7 +307,7 @@ main = do
                 , ppSep = "   "
              }
             updatePointer (Relative 0.95 0.95)
-      , startupHook = setWMName "LG3D"
+      , startupHook = startupHook defaults >> setWMName "LG3D"
   }
 
 
