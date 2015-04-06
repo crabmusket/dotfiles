@@ -20,4 +20,6 @@ After:
     echo 'source ~/.vim/.vimrc' > .vimrc
     cd .vim && git submodule init && git submodule update && cd -
 
-`sudo visudo` and add `daniel ALL=(ALL:ALL) NOPASSWD: /etc/sbin/pm-suspend`.
+`sudo visudo` and add
+
+    daniel ALL=(ALL:ALL) NOPASSWD: /etc/sbin/pm-suspend, /etc/sbin/pm-hibernate 

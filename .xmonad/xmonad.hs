@@ -106,6 +106,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. shiftMask, xK_s),
      spawn "sudo pm-suspend")
 
+  -- Hibernate!
+  , ((modMask .|. shiftMask, xK_h),
+     spawn "sudo pm-hibernate")
+
   -- Lock the screen using xscreensaver.
   , ((modMask .|. controlMask, xK_l),
      spawn "xscreensaver-command -lock")
