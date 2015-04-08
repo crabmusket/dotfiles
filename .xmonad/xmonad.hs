@@ -304,7 +304,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList
 -- By default, do nothing.
 myStartupHook = do
     spawn "~/.xmonad/gnome-keyring.sh"
-    return ()
+    spawn "redshift -l -33:151 -b 0.8:0.4"
 
 
 ------------------------------------------------------------------------
