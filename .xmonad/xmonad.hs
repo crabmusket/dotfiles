@@ -308,11 +308,11 @@ myStartupHook = do
 
 
 ------------------------------------------------------------------------
--- Run xmonad with all the defaults we set up.
+-- Run xmonad with all the config we set up.
 --
 main = do
   xmproc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
-  xmonad $ defaults {
+  xmonad $ myConfig {
       logHook = do
             dynamicLogWithPP $ xmobarPP {
                   ppOutput = hPutStrLn xmproc
@@ -321,7 +321,7 @@ main = do
                 , ppSep = "   "
              }
             updatePointer (Relative 0.95 0.95)
-      , startupHook = startupHook defaults >> setWMName "LG3D"
+      , startupHook = startupHook myConfig >> setWMName "LG3D"
   }
 
 
@@ -333,7 +333,7 @@ main = do
 --
 -- No need to modify this.
 --
-defaults = defaultConfig {
+myConfig = defaultConfig {
     -- simple stuff
     terminal           = myTerminal,
     focusFollowsMouse  = myFocusFollowsMouse,
