@@ -52,8 +52,8 @@ myLayout = avoidStruts (
     Mirror (Tall 1 (3/100) (1/2)) |||
     tabbed shrinkText tabConfig |||
     Full |||
-    spiral (6/7)) |||
-    noBorders (fullscreenFull Full)
+    spiral (6/7)
+ ) ||| noBorders (fullscreenFull Full)
 
 
 ------------------------------------------------------------------------
