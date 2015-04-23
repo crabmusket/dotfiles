@@ -9,6 +9,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
+import XMonad.Hooks.EwmhDesktops (ewmh)
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spiral
@@ -305,24 +306,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList
 myStartupHook = do
     spawn "~/.xmonad/gnome-keyring.sh"
     spawn "~/.xmonad/redshift.sh"
-
-
-------------------------------------------------------------------------
--- Run xmonad with all the config we set up.
---
-main = do
-  xmproc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
-  xmonad $ myConfig {
-      logHook = do
-            dynamicLogWithPP $ xmobarPP {
-                  ppOutput = hPutStrLn xmproc
-                , ppTitle = const "" --xmobarColor xmobarTitleColor "" . shorten 100
-                , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
-                , ppSep = "   "
-             }
-            updatePointer (Relative 0.95 0.95)
-      , startupHook = startupHook myConfig >> setWMName "LG3D"
-  }
+    setWMName "LG3D"
 
 
 ------------------------------------------------------------------------
@@ -333,7 +317,7 @@ main = do
 --
 -- No need to modify this.
 --
-myConfig = defaultConfig {
+myConfig = ewmh $ defaultConfig {
     -- simple stuff
     terminal           = myTerminal,
     focusFollowsMouse  = myFocusFollowsMouse,
@@ -348,6 +332,23 @@ myConfig = defaultConfig {
     mouseBindings      = myMouseBindings,
 
     -- hooks, layouts
-    layoutHook         = smartBorders myLayout,
-    startupHook        = myStartupHook
+    startupHook        = myStartupHook,
+    layoutHook         = smartBorders myLayout
 }
+
+
+------------------------------------------------------------------------
+-- Run xmonad with all the config we set up.
+--
+main = do
+  xmproc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
+  xmonad $ myConfig {
+    logHook = do
+          dynamicLogWithPP $ xmobarPP {
+                ppOutput = hPutStrLn xmproc
+              , ppTitle = const "" --xmobarColor xmobarTitleColor "" . shorten 100
+              , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
+              , ppSep = "   "
+           }
+          updatePointer (Relative 0.95 0.95)
+   }
