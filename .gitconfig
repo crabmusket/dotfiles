@@ -12,6 +12,7 @@
 [core]
 	filemode = false
 	autocrlf = false
+	excludesfile = ~/.gitexcludesfile
 [push]
 	default = simple
 [color]
