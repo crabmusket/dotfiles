@@ -9,7 +9,7 @@ Before:
     mv dotfiles/.[!.]* .
     rm -r dotfiles
     echo 'export SSH_AUTH_SOCK="$GNOME_KEYRING_CONTROL/ssh"' >> .profile
-    sudo apt-get install xmonad xmobar suckless-tools cabal-install -y
+    sudo apt-get install xmonad xmobar suckless-tools cabal-install byzanz autoconf -y
     cabal update && cabal install xmonad-contrib-0.11.3
 
 After:
@@ -19,6 +19,9 @@ After:
     mv vimfiles .vim
     echo 'source ~/.vim/.vimrc' > .vimrc
     cd .vim && git submodule init && git submodule update && cd -
+    git clone git://github.com/lolilolicon/xrectsel.git
+    cd xrectsel && ./bootstrap && ./configure --prefix /usr && make && sudo cp xrectsel /usr/bin
+    cd .. && rm -rf xrectsel
     sudo cp byzanz/byzanz-record-region /usr/bin
 
 `sudo visudo` and add
