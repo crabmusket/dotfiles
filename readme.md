@@ -19,6 +19,7 @@ After:
     mv vimfiles .vim
     echo 'source ~/.vim/.vimrc' > .vimrc
     cd .vim && git submodule init && git submodule update && cd -
+    sudo cp byzanz/byzanz-record-region /usr/bin
 
 `sudo visudo` and add
 
