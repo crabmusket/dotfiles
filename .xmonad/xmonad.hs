@@ -107,13 +107,13 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. shiftMask, xK_s),
      spawn "sudo pm-suspend")
 
+  -- Lock screen.
+  , ((modMask .|. shiftMask, xK_l),
+     spawn "dm-tool switch-to-greeter")
+
   -- Hibernate!
   , ((modMask .|. shiftMask, xK_h),
      spawn "sudo pm-hibernate")
-
-  -- Lock the screen using xscreensaver.
-  , ((modMask .|. controlMask, xK_l),
-     spawn "xscreensaver-command -lock")
 
   -- Launch dmenu
   -- Use this to launch programs without a key binding.
