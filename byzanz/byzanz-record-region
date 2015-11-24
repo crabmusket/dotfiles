@@ -26,7 +26,8 @@ beep() {
 GEOMETRY=$(xrectsel "--x=%x --y=%y --width=%w --height=%h") || exit -1
 
 notify-send -t $((DELAY*1000)) -u normal -i info 'Byzanz' "Recording in ${DELAY}s"
-sleep $((DELAY+0.5))
+sleep $DELAY
+sleep 0.5
 beep
 byzanz-record --delay=0 --duration=$D $GEOMETRY "$FOLDER/recording_$TIME.gif"
 beep
